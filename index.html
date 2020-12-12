@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hi-pda简单搜索</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-58784746-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-58784746-1");
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="l-heading">hi-pda简单搜索</h1>
+      </div>
+    </header>
+
+    <div class="container">
+      <div id="app" v-cloak>
+        <h2 v-text="db_D_load_status"></h2>
+        <h2 v-text="db_BS_load_status"></h2>
+
+        <input
+          type="text"
+          v-model="keywords"
+          @keyup.enter="search('bs')"
+          v-if="true"
+          class="search-input"
+        />
+
+        <button @click="search('bs')" :disabled="!db_BS_loaded" class="btn">
+          搜索BS版
+        </button>
+        <button
+          @click="search('d')"
+          :disabled="!db_D_loaded"
+          v-if="showd"
+          class="btn"
+        >
+          搜索D版
+        </button>
+
+        <div class="result-list" v-if="has_result">
+          <ul>
+            <li class="result-list-item" v-for="result in results">
+              <h3>
+                <a
+                  :href="'https://www.hi-pda.com/forum/viewthread.php?tid='+result[1]"
+                  target="_blank"
+                  v-html="result[0]"
+                ></a>
+              </h3>
+              <span>{{result[2]}}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="no-result" v-else>
+          <h3>
+            OOPS,关键词
+            <span class="keyword">"{{keywords}}"</span> 没有搜索结果😥
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <a href="https://github.com/fqxufo/hipda-simple-search"
+          >源代码: https://github.com/fqxufo/hipda-simple-search</a
+        >
+      </p>
+      <h2 ><a href="https://github.com/fqxufo/hipda-search-revive"  target="_blank" style="color: red">🎉 新油猴脚本 猛击这里了解</a><h2/>
+    </footer>
+
+    <script src="https://cdn.staticfile.org/vue/2.6.11/vue.js"></script>
+    <script src="js/sql.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
