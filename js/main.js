@@ -57,7 +57,7 @@ initSqlJs({ locateFile: (filename) => `js/${filename}` }).then(function (
 const app = new Vue({
   el: "#app",
   data: {
-    keywords: "ps4 pro",
+    keywords: "基金 割",
     keywordslist: [],
     results: [],
     db_D_loaded: false,
@@ -180,4 +180,4 @@ setTimeout(() => {
   if (is_hipda_xyz && !app.db_D_loaded) {
     window.location.href = "https://fqxufo.gitee.io/hipda-simple-search/";
   }
-}, 15000);
+}, 18000);
