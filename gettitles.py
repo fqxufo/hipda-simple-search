@@ -42,7 +42,7 @@ def login():
 
     USERNAME = data['USERNAME']
     PWD = data['PWD']
-    loginurl = 'https://www.hi-pda.com/forum/logging.php?action=login&loginsubmit=yes&inajax=1'
+    loginurl = 'https://www.4d4y.com/forum/logging.php?action=login&loginsubmit=yes&inajax=1'
     data = {'loginfield': 'username', 'username': USERNAME, 'password': PWD}
 
     result = hpsession.post(loginurl, data=data)
@@ -52,7 +52,7 @@ def login():
 
 def get_title(page,cur,fid):
     # fid 2:D版, 6: BS版, 59: E版
-    baseurl = 'https://www.hi-pda.com/forum/forumdisplay.php?orderby=dateline&fid='
+    baseurl = 'https://www.4d4y.com/forum/forumdisplay.php?orderby=dateline&fid='
     listurl =  baseurl + str(fid) + '&page=' + str(page)
     # print(listurl)
     listpage = hpsession.get(listurl)
